@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp
 public class Main extends LinearOpMode {
-    //balls
+    //balls :)
     @Override
     public void runOpMode() {
         // Declare our motors
