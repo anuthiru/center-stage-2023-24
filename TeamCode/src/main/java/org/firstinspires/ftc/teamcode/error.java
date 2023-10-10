@@ -8,9 +8,8 @@ import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-
 @TeleOp
-public class Main extends LinearOpMode {
+public class error extends LinearOpMode {
     //balls
     @Override
     public void runOpMode() {
@@ -26,35 +25,35 @@ public class Main extends LinearOpMode {
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeft.setDirection(DcMotorSimple.Direction.REVERSE );
 
-        double target = 10;
+        double target = 20;
+        double initError = 0;
+        double kp = 0.1;
+        double kd = 0.2;
+        double ki = 0.0001;
+        double errorSum = 0;
         waitForStart();
 
         if (isStopRequested()) return;
 
         while (opModeIsActive()) {
-            double y = -gamepad1.left_stick_y;
-            double x = gamepad1.left_stick_x * 1.1;
-            double rx = gamepad1.right_stick_x;
 
-            double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
-            double frontLeftPower = (y + x + rx) / denominator;
-            double backLeftPower = (y - x + rx) / denominator;
-            double frontRightPower = (y - x - rx) / denominator;
-            double backRightPower = (y + x - rx) / denominator;
-
-            if (gamepad1.a){
-                grip.setPosition(.4);
+            double newError = target - distance.getDistance(DistanceUnit.CM);
+            double kalError = (newError+initError)/2;
+            errorSum = kalError + errorSum;
+            double diffError = kalError-initError;
+            double power = -kp*kalError-kd*diffError-ki*errorSum;
+            initError = kalError;
+            if (power > 0.5){
+                power = 0.5;
             }
-            if (gamepad1.b){
-                grip.setPosition(.48);
+            if(power < -0.5){
+                power = -0.5;
             }
 
-            double error = target - distance.getDistance(DistanceUnit.CM);
-
-            frontLeft.setPower(frontLeftPower);
-            backLeft.setPower(backLeftPower);
-            frontRight.setPower(frontRightPower);
-            backRight.setPower(backRightPower);
+            frontLeft.setPower(power);
+            backLeft.setPower(power);
+            frontRight.setPower(power);
+            backRight.setPower(power);
 
         }
 
