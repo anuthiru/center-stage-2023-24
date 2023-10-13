@@ -11,7 +11,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 @TeleOp
 public class Main extends LinearOpMode {
-    //balls :)
+    //Hi doruk :)
     @Override
     public void runOpMode() {
         DcMotor frontLeft = hardwareMap.dcMotor.get("frontLeft");
@@ -27,7 +27,10 @@ public class Main extends LinearOpMode {
         backLeft.setDirection(DcMotorSimple.Direction.REVERSE );
 
         double target = 10;
+
+        double initialGripPos = grip.getPosition() - 0.46;
         waitForStart();
+
 
         if (isStopRequested()) return;
 
@@ -43,10 +46,10 @@ public class Main extends LinearOpMode {
             double backRightPower = (y + x - rx) / denominator;
 
             if (gamepad1.a){
-                grip.setPosition(.4);
+                grip.setPosition(initialGripPos);
             }
             if (gamepad1.b){
-                grip.setPosition(.48);
+                grip.setPosition(initialGripPos + 0.46);
             }
 
             double error = target - distance.getDistance(DistanceUnit.CM);
