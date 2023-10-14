@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 @TeleOp
-public class Main extends LinearOpMode {
+public class ArmTest extends LinearOpMode {
     //Hi doruk :)
     @Override
     public void runOpMode() {
@@ -19,6 +19,7 @@ public class Main extends LinearOpMode {
         DcMotor frontRight = hardwareMap.dcMotor.get("frontRight");
         DcMotor backRight = hardwareMap.dcMotor.get("backRight");
         Servo grip = hardwareMap.servo.get("grip");
+        Servo arm = hardwareMap.servo.get("arm");
         DistanceSensor distance = hardwareMap.get(DistanceSensor.class, "distance");
 
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -28,11 +29,15 @@ public class Main extends LinearOpMode {
 
         double target = 10;
 
-        double initialGripPos = grip.getPosition();
-        waitForStart();
 
+        waitForStart();
+        double initialGripPos = grip.getPosition();
 
         if (isStopRequested()) return;
+
+        arm.resetDeviceConfigurationForOpMode();
+        arm.getPosition();
+        arm.setPosition(0.5);
 
         while (opModeIsActive()) {
             double y = -gamepad1.left_stick_y;
@@ -46,18 +51,22 @@ public class Main extends LinearOpMode {
             double backRightPower = (y + x - rx) / denominator;
 
             if (gamepad1.a){
-                grip.setPosition(initialGripPos);
+                grip.setPosition(0.615);
             }
             if (gamepad1.b){
-                grip.setPosition(initialGripPos + 0.46);
+                grip.setPosition(0.57);
             }
+
+
+
+
 
             double error = target - distance.getDistance(DistanceUnit.CM);
 
-            frontLeft.setPower(frontLeftPower);
-            backLeft.setPower(backLeftPower);
-            frontRight.setPower(frontRightPower);
-            backRight.setPower(backRightPower);
+            //frontLeft.setPower(frontLeftPower);
+            //backLeft.setPower(backLeftPower);
+            //frontRight.setPower(frontRightPower);
+            //backRight.setPower(backRightPower);
 
         }
 
