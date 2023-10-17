@@ -21,10 +21,10 @@ public class Main extends LinearOpMode {
         Servo grip = hardwareMap.servo.get("grip");
         DistanceSensor distance = hardwareMap.get(DistanceSensor.class, "distance");
 
-        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        //frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         //backRight.setDirection(DcMotorSimple.Direction.REVERSE);
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        backLeft.setDirection(DcMotorSimple.Direction.REVERSE );
+        //backLeft.setDirection(DcMotorSimple.Direction.REVERSE );
 
         double target = 10;
         waitForStart();

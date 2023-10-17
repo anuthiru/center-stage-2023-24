@@ -21,13 +21,13 @@ public class error extends LinearOpMode {
         DistanceSensor distance = hardwareMap.get(DistanceSensor.class, "distance");
 
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        //backRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        backRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        //frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeft.setDirection(DcMotorSimple.Direction.REVERSE );
 
         double target = 20;
         double initError = 0;
-        double kp = 0.1;
+        double kp = 0.05;
         double kd = 0.2;
         double ki = 0.0001;
         double errorSum = 0;
