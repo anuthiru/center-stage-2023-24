@@ -35,9 +35,7 @@ public class ArmTest extends LinearOpMode {
 
         if (isStopRequested()) return;
 
-        arm.resetDeviceConfigurationForOpMode();
-        arm.getPosition();
-        arm.setPosition(0.5);
+
 
         while (opModeIsActive()) {
             double y = -gamepad1.left_stick_y;
@@ -53,8 +51,24 @@ public class ArmTest extends LinearOpMode {
             if (gamepad1.a){
                 grip.setPosition(0.615);
             }
-            if (gamepad1.b){
+            if (gamepad1.b) {
                 grip.setPosition(0.57);
+            }
+            if (gamepad1.dpad_up){
+                arm.setDirection(Servo.Direction.FORWARD);
+                arm.setPosition(0.8);
+            }
+            if (gamepad1.dpad_down) {
+                arm.setDirection(Servo.Direction.FORWARD);
+                arm.setPosition(0.37);
+            }
+            if (gamepad1.dpad_left) {
+                arm.setDirection(Servo.Direction.FORWARD);
+                arm.setPosition(0.35);
+            }
+            if (gamepad1.dpad_right) {
+                arm.setDirection(Servo.Direction.FORWARD);
+                arm.setPosition(0.0);
             }
 
 
