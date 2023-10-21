@@ -17,6 +17,7 @@ public class TrialAuto extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        double target = 90;
         DcMotor frontLeft = hardwareMap.dcMotor.get("frontLeft");
         DcMotor backLeft = hardwareMap.dcMotor.get("backLeft");
         DcMotor frontRight = hardwareMap.dcMotor.get("frontRight");
@@ -40,11 +41,33 @@ public class TrialAuto extends LinearOpMode {
         //backLeft.setDirection(DcMotorSimple.Direction.REVERSE );
         while (opModeIsActive()){
             double Yaw = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+            double shiftYaw = Yaw + 180;
+            double shiftTarget = target + 180;
             double dist = distance.getDistance(DistanceUnit.CM);
             telemetry.addData("Yaw", Yaw);
             telemetry.addData("Distance", dist);
+            double error = shiftTarget - shiftYaw;
+            telemetry.addData("error",error);
             telemetry.update();
 
+            if(gamepad1.a) {
+                if (error > target) {
+                    frontLeft.setPower(error/10);
+                    backLeft.setPower(error/10);
+                    frontRight.setPower(-error/10);
+                    backRight.setPower(-error/10);
+                }
+                if (error < target) {
+                    frontLeft.setPower(-error/10);
+                    backLeft.setPower(-error/10);
+                    frontRight.setPower(error/10);
+                    backRight.setPower(error/10);
+                }
+            }
+            frontLeft.setPower(0);
+            backLeft.setPower(0);
+            frontRight.setPower(0);
+            backRight.setPower(0);
         }
     }
 }
