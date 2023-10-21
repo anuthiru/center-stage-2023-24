@@ -10,7 +10,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 @TeleOp
 public class error extends LinearOpMode {
-    //balls
     @Override
     public void runOpMode() {
         DcMotor frontLeft = hardwareMap.dcMotor.get("frontLeft");
