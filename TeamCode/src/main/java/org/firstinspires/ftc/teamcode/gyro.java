@@ -43,7 +43,6 @@ public class gyro extends LinearOpMode {
 
         double target = 20;
 
-
         waitForStart();
 
         while (opModeIsActive()) {
