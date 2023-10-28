@@ -21,6 +21,7 @@ public class Main extends LinearOpMode {
         DcMotor frontRight = hardwareMap.dcMotor.get("frontRight");
         DcMotor backRight = hardwareMap.dcMotor.get("backRight");
         Servo grip = hardwareMap.servo.get("grip");
+
         DistanceSensor distance = hardwareMap.get(DistanceSensor.class, "distance");
 
         //frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
