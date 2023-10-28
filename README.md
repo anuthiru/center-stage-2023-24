@@ -1,5 +1,7 @@
-##Team 404 Notes
+**Team 404 Notes**
+
 Branch Master is deprecated.
+
 Most updated branch is master_without_err.
 
 
