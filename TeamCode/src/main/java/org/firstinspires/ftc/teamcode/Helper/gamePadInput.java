@@ -123,8 +123,8 @@ public class gamePadInput {
     // -------------------------------------------------------------
 
     // Class Constructor
-    public GamepadInput(@NonNull Gamepad gp) {
-        this.inputGPad = gp;
+    public void GamepadInput(@NonNull Gamepad gp) {
+
     }
 
 
