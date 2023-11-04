@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.Helper;
 
-public class Driving_Train {
+
     /* Copyright (c) 2023 FIRST Tech Challenge - Team #404 “=ma” (https://...)
      *
      * Permission is granted, free of charge, to any person obtaining a copy of this software and
@@ -18,16 +18,18 @@ public class Driving_Train {
      * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      */
 
-package org.firstinspires.ftc.teamcode.helper;
+
+import static java.lang.Thread.sleep;
 
 import androidx.annotation.NonNull;
+
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import static android.os.SystemClock.sleep;
+
 import java.util.Date;
 
-    /*
+/*
      *  This class demonstrates the concepts for controlling a holonomic drivetrain using
      *  four(4) motors and GoBilda Mecanum wheels using human inputs from a gamepad.
      *
@@ -179,7 +181,7 @@ import java.util.Date;
          *      IMPORTANT : This method is blocking - Control may not be retuned to the caller for up
          *                  two (2) seconds
          */
-        public void setBrakeStatus(boolean braking ) {
+        public void setBrakeStatus(boolean braking ) throws InterruptedException {
             Braking_ON = braking;
 
             // Store Telemetry Variables
@@ -245,4 +247,4 @@ import java.util.Date;
         }
 
     }
-}
+
