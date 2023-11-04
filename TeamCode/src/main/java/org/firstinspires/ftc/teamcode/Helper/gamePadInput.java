@@ -45,9 +45,7 @@ import java.util.Date;
 
 public class gamePadInput {
 
-    public gamePadInput(Gamepad inputGPad) {
-        this.inputGPad = inputGPad;
-    }
+
 
     public enum GameplayInputType {
         NONE("No Input"),
@@ -123,8 +121,8 @@ public class gamePadInput {
     // -------------------------------------------------------------
 
     // Class Constructor
-    public void GamepadInput(@NonNull Gamepad gp) {
-
+    public gamePadInput(Gamepad inputGPad) {
+        this.inputGPad = inputGPad;
     }
 
 
