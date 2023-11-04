@@ -54,7 +54,6 @@ public class Main extends LinearOpMode {
             if (gamepad1.b){
                 grip.setPosition(initialGripPos + 0.46);
             }
-
             double error = target - distance.getDistance(DistanceUnit.CM);
 
             frontLeft.setPower(frontLeftPower);
