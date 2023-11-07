@@ -22,8 +22,8 @@ import org.firstinspires.ftc.teamcode.Helper.Drivetrain;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-@TeleOp(name="Omni Drive To AprilTag", group = "Concept")
-@Disabled
+@TeleOp(name="Omni Drive To AprilTag") //this is the file name in hub
+
 public class RoboGoApril extends LinearOpMode
 {
     // Adjust these numbers to suit your robot.
@@ -55,8 +55,8 @@ public class RoboGoApril extends LinearOpMode
 
     GameplayInputType iN = game1.WaitForGamepadInput(100);
 
-
-
+    Drivetrain game2 = new Drivetrain(hardwareMap); //hardware
+    // map accessing the driver hub, so drive train can get those values for left, right
 
 
     @Override public void runOpMode()
@@ -172,8 +172,6 @@ public class RoboGoApril extends LinearOpMode
      * <p>
      * Positive Yaw is counter-clockwise
      */
-
-    Drivetrain game2 = new Drivetrain(hardwareMap); //hardware map accessing the driver hub, so drive train can get those values for left, right
 
     public void moveRobot(double x, double y, double yaw) {
 
